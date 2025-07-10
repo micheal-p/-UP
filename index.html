@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UP COIN $UP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #000;
+      color: #fff;
+      scroll-behavior: smooth;
+      padding-bottom: 100px; /* For fixed footer space */
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: #111;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.5rem;
+      color: #0f0;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+    nav a {
+      color: #0f0;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #fff;
+    }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #0f0;
+      margin: 4px 0;
+    }
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background: #000;
+      z-index: 1001;
+    }
+    .nav-mobile a {
+      padding: 1rem;
+      color: #0f0;
+      text-decoration: none;
+      border-top: 1px solid #222;
+      font-weight: bold;
+    }
+    .nav-mobile a:hover {
+      background: #111;
+    }
+    .hero {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      color: #0f0;
+      animation: pulse 2s infinite;
+    }
+    .contract {
+      margin-top: 1rem;
+      font-size: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .contract span {
+      background: #222;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      word-break: break-word;
+    }
+    .copy-btn {
+      background: #0f0;
+      color: #000;
+      border: none;
+      margin-left: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .copy-btn:hover {
+      background: #0c0;
+    }
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    .stats div {
+      border: 1px dashed #0f0;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      animation: pulse 3s infinite;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 1.5rem;
+      color: #0f0;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.9; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    button.green {
+      background: #0f0;
+      color: #000;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button.green:hover {
+      background: #0c0;
+    }
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 1rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .twitter-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .twitter-btn svg {
+      fill: #1da1f2;
+      width: 32px;
+      height: 32px;
+    }
+    @media (max-width: 1024px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .stats {
+        gap: 1rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero h2 {
+        font-size: 1.2rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+      .nav-mobile.show {
+        display: flex;
+      }
+      .stats {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .hero h2 {
+        font-size: 1rem;
+      }
+      .contract {
+        flex-direction: column;
+        align-items: center;
+      }
+      .copy-btn {
+        margin-left: 0;
+        margin-top: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo" style="display: flex; align-items: center; gap: 4px;">
+      <img src="logo.jpg" alt="$UP Logo" style="height: 40px; width: 40px; border-radius: 50%; object-fit: cover;">
+      <span>$UP</span>
+    </div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="https://raydium.io/swap/?inputMint=sol&outputMint=8eVgWdy5gkoZNeSqRLTjzffGHq8aZQvFxBqbvTXDbonk">Buy Coin</a>
+      <a href="https://dexscreener.com/solana/5YUxfgGx7XsJnfkLhUbB7JwDjfJ7kBhxjbAEZ2DR4rz">Coin Chart</a>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="mobileMenu">
+    <a href="#about" onclick="closeMenu()">About</a>
+    <a href="https://raydium.io/swap/?inputMint=sol&outputMint=8eVgWdy5gkoZNeSqRLTjzffGHq8aZQvFxBqbvTXDbonk" onclick="closeMenu()">Buy Coin</a>
+    <a href="https://dexscreener.com/solana/5YUxfgGx7XsJnfkLhUbB7JwDjfJ7kBhxjbAEZ2DR4rz" onclick="closeMenu()">Coin Chart</a>
+  </div>
+  <section class="hero">
+    <h1>UP COIN $UP / SOL</h1>
+    <h2>Peaked Top #3 on DEX Screener</h2>
+    <div class="contract">
+      <span id="contract-text">8eVgWdy5gkoZNeSqRLTjzffGHq8aZQvFxBqbvTXDbonk</span>
+      <button class="copy-btn" onclick="copyContract()">Copy</button>
+    </div>
+  </section>
+  <section class="stats">
+    <div>
+      <strong>24h Growth</strong><br />
+      <span class="stat-number" id="growth">+0%</span>
+    </div>
+    <div>
+      <strong>24h Volume</strong><br />
+      <span class="stat-number" id="volume">$0</span>
+    </div>
+    <div>
+      <strong>Transactions</strong><br />
+      <span class="stat-number" id="txns">0</span>
+    </div>
+  </section>
+  <section id="about" style="padding: 2rem;">
+    <center><h2>About</h2></center>
+    <p>$UP is a fast-moving, Solana-based token capturing attention in the decentralized finance space. With a market cap and fully diluted valuation of $649K, $UP boasts a liquidity pool of $95K, supporting high trading activity with $5.9M in 24-hour trading volume across 38,597 transactions. The token has seen remarkable growth, surging 892% in the past 24 hours, driven by 6,228 buyers and 5,589 sellers, with buy volume ($3.0M) slightly outpacing sell volume ($2.9M). Built on Solana’s high-speed blockchain, $UP leverages community momentum and market enthusiasm, making it a dynamic player in the meme coin ecosystem. As with all volatile assets, potential participants should conduct thorough research and exercise caution when trading on platforms like Raydium.</p>
+  </section>
+  <section id="buy" style="padding: 2rem; text-align: center;">
+    <h2>Buy $UP</h2>
+    <a href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=8eVgWdy5gkoZNeSqRLTjzffGHq8aZQvFxBqbvTXDbonk" target="_blank">
+      <button class="green">Go to Raydium</button>
+    </a>
+  </section>
+  <footer>
+    <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+      <button class="twitter-btn" onclick="window.open('https://x.com/i/communities/1943361112738795861/', '_blank')">
+        <img src="twitter-x-seeklogo.png" alt="twitter" style="width: 24px; height: 24px;">
+      </button>
+      <button class="twitter-btn" onclick="window.open('https://dexscreener.com/solana/8eVgWdy5gkoZNeSqRLTjzffGHq8aZQvFxBqbvTXDbonk', '_blank')">
+        <img src="dex-screener-seeklogo.png" alt="DexScreener" style="width: 24px; height: 24px;">
+      </button>
+    </div>
+    <div style="font-size: 0.9rem; color: #aaa;">
+      © 2025 $UP Token. All rights reserved. | Not financial advice. DYOR.
+    </div>
+  </footer>
+  <script>
+    function copyContract() {
+      const contract = document.getElementById('contract-text').innerText;
+      navigator.clipboard.writeText(contract).then(() => {
+        alert('Contract Address Copied!');
+      });
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('show');
+    }
+
+    function closeMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.remove('show');
+    }
+
+    document.addEventListener('click', function(event) {
+      const menu = document.getElementById('mobileMenu');
+      const toggle = document.querySelector('.menu-toggle');
+      if (menu.classList.contains('show') && !menu.contains(event.target) && !toggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    function animateValue(id, start, end, duration) {
+      const obj = document.getElementById(id);
+      let startTimestamp = null;
+      const step = timestamp => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerText = id === 'growth' ? `+${Math.floor(progress * end)}%` :
+                        id === 'marketCap' ? `$${(progress * end).toFixed(0)}K` :
+                        id === 'volume' ? `$${(progress * end).toFixed(1)}M` :
+                        Math.floor(progress * end).toLocaleString();
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+
+    animateValue("growth", 0, 892, 2000);
+    animateValue("marketCap", 0, 649, 2000);
+    animateValue("volume", 0, 5.9, 2000);
+    animateValue("txns", 0, 38597, 2000);
+  </script>
+</body>
+</html>
